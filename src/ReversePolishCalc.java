@@ -15,7 +15,6 @@ public class ReversePolishCalc {
 
     public double calculate(String input) {
 
-
         // 1. Use the String split method to split the string into tokens at the commas
         tokens = input.split(",");
 
@@ -23,37 +22,33 @@ public class ReversePolishCalc {
         stack = new String[tokens.length];
 
         // 3. write the algorithm
-        for(int i = 0; i < tokens.length; ++i) {
+        for (int i = 0; i < tokens.length; ++i) {
             // calls to push() and pop() and do the math here
 
-            switch(tokens[i]){
+            switch (tokens[i]) {
                 case "+":
-                     num2 = pop();
-                     num1 = pop();
-                    push( num1 + num2);
+                    num2 = pop();
+                    num1 = pop();
+                    push(num1 + num2);
                     break;
                 case "-":
                     num2 = pop();
                     num1 = pop();
-                    push( num1 - num2);
+                    push(num1 - num2);
                     break;
                 case "*":
                     num2 = pop();
                     num1 = pop();
-                    push( num1 * num2);
+                    push(num1 * num2);
                     break;
                 case "/":
                     num2 = pop();
                     num1 = pop();
-                    push( num1 / num2);
+                    push(num1 / num2);
                     break;
-                default:push(Double.parseDouble(tokens[i]));
-
+                default:
+                    push(Double.parseDouble(tokens[i]));
             }
-
-
-
-
         }
 
         // 4. return the result
@@ -64,24 +59,19 @@ public class ReversePolishCalc {
         // push on the stack
         stack[top] = number;
         top++;
-
-
     }
 
     private void push(double d) {
         // change the double to a string and then push it on the stack
-        push( Double.toString(d) );
+        push(Double.toString(d));
 
     }
 
     private double pop() {
         // remove the string from the top of the stack and convert it to a double and return it
 
-            top--;
-            return Double.parseDouble(stack[top]);
-
-
-
+        top--;
+        return Double.parseDouble(stack[top]);
 
 
     }
